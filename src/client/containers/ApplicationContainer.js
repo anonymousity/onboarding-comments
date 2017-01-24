@@ -1,6 +1,6 @@
 import { connect,applyMiddleware } from 'react-redux'
 import ApplicationComponent from 'Components/ApplicationComponent'
-import * as actions from 'Actions'
+import { updateAction } from 'Actions'
 
 const mapStateToProps = ( state, props ) => {
     return {
@@ -31,7 +31,11 @@ const mapDispatchToProps = (dispatch) => {
   // });
 
   // return actions;
-  return {};
+  return {
+    doThing: function () {
+      return dispatch(updateAction())
+    }
+  };
 }
 
 const ApplicationContainer = connect(

@@ -17,10 +17,7 @@ import {
   syncHistoryWithStore,
   routerReducer }             from 'react-router-redux'
 
-import {
-        logger,
-        thunk
-      }                       from 'Middleware';
+import ReduxThunk                from 'redux-thunk'
 
 import {
 
@@ -34,7 +31,7 @@ const store = createStore(
     Application,
     routing: routerReducer
   }),
-  // applyMiddleware(thunk) see: http://redux.js.org/docs/advanced/Middleware.html
+  applyMiddleware(ReduxThunk)
 );
 
 const history = syncHistoryWithStore(hashHistory, store);

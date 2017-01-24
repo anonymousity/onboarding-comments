@@ -1,6 +1,15 @@
 import React from 'react';
-export default ApplicationComponent;
+import MessageForm from './MessageForm.jsx'
 
-function ApplicationComponent(){
-    return <div>Im a the default component. Make me awesome.</div>
+export default class ApplicationComponent extends React.Component {
+
+	render () {
+		return(
+			<div>
+				<MessageForm />
+			</div>
+		)
+	}
+
 }
+

@@ -1,12 +1,19 @@
+import update from 'react-addons-update';
+
 const initialState = {
-    TOTALLY_SILLY_STATE:'Hello World'
+    user: 'test',
+    messages: [],
+    newMessage: {
+    	title: '',
+    	body: ''
+    }
 };
 const Application = (state=initialState, action) =>  {
   switch (action.type){
-  case 'SOMETHING':
-    return state;
+  case 'UPDATE_FORM_DATA':
+    return update(state, {newMessage: {[action.field]: {$set: action.val}}})
   default:
-      return state
+    return state
   }
 }
 export default Application;
