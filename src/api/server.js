@@ -37,7 +37,14 @@ figlet(introAscii,{font:asciiFont})
       }));
 
       app.post('/messages', function(req, res) {
-        // write the datas
+        console.log("*****************")
+        console.log(req)
+        db.Messages.create({
+          title: req.body.title,
+          body: req.body.body
+        }).then(function(data){
+          res.status(200).json({status: 'OK'})
+        })
       });
 
       app.get('/messages', function(req, res) {

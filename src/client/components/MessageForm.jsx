@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { updateAction } from 'Actions'
+import { updateFormAction, asyncPostAction } from 'Actions'
 import InputBox from './InputBox.jsx';
 
 class MessageForm extends React.Component {
@@ -8,7 +8,6 @@ class MessageForm extends React.Component {
 	render () {
 		return(
 			<section>
-				<form>
 					<InputBox 
 						label="Title:"
 						type="text"
@@ -23,7 +22,7 @@ class MessageForm extends React.Component {
 						onChange={this.props.updateForm}
 						field="body"
 					/>
-				</form>
+					<button onClick={this.props.postData.bind(this)}>Submit</button>
 			</section>
 		)
 	}
@@ -39,7 +38,10 @@ const mapStateToProps = ( state, props ) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     updateForm: function (field, val) {
-      return dispatch(updateAction(field, val))
+      return dispatch(updateFormAction(field, val));
+    },
+    postData: function () {
+    	return dispatch(asyncPostAction(this.props));
     }
   };
 }
