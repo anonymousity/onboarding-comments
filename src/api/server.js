@@ -36,6 +36,14 @@ figlet(introAscii,{font:asciiFont})
         extended:true //see:https://www.npmjs.com/package/body-parser
       }));
 
+      app.post('/messages', function(req, res) {
+        // write the datas
+      });
+
+      app.get('/messages', function(req, res) {
+        // get all the messages
+      });
+
       app.get('/', function(req, res) {
         res.sendFile(path.join(__dirname,"../../dist/index.html"));
       });
