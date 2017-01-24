@@ -1,5 +1,6 @@
 import React from 'react';
 import MessageForm from './MessageForm.jsx'
+import MessageContainer from './MessageContainer.jsx'
 
 export default class ApplicationComponent extends React.Component {
 
@@ -7,6 +8,7 @@ export default class ApplicationComponent extends React.Component {
 		return(
 			<div>
 				<MessageForm />
+				<MessageContainer />
 			</div>
 		)
 	}

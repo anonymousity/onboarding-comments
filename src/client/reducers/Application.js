@@ -12,12 +12,13 @@ const Application = (state=initialState, action) =>  {
   switch (action.type){
   case 'UPDATE_FORM_DATA':
     return update(state, {newMessage: {[action.field]: {$set: action.val}}})
-  case 'POST_DATA':
-  	return state
+  case 'UPDATE_MESSAGES':
+  	return update(state, {messages: {$set: action.payload}})
   case 'CLEAR_FORM':
-  	return {... {newMessage: initialState.newMessage}}
+  	return update(state, {newMessage: {$set: initialState.newMessage}})
   default:
     return state
   }
 }
+
 export default Application;

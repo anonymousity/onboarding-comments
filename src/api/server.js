@@ -37,8 +37,6 @@ figlet(introAscii,{font:asciiFont})
       }));
 
       app.post('/messages', function(req, res) {
-        console.log("*****************")
-        console.log(req)
         db.Messages.create({
           title: req.body.title,
           body: req.body.body
@@ -48,7 +46,9 @@ figlet(introAscii,{font:asciiFont})
       });
 
       app.get('/messages', function(req, res) {
-        // get all the messages
+        db.Messages.findAll().then(function(data){
+          res.status(200).json(data);
+        });
       });
 
       app.get('/', function(req, res) {
